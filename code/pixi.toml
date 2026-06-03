@@ -3,11 +3,16 @@ authors = ["Tobias Hunger <tobias@prefix.dev>"]
 channels = ["https://prefix.dev/robostack-jazzy", "https://prefix.dev/conda-forge"]
 name = "code"
 platforms = ["linux-64"]
+preview = ["pixi-build"]
 version = "0.1.0"
 
 [tasks]
 
 [dependencies]
+ros-jazzy-turtlebot3-mogi = { path = "turtlebot3_mogi" }
+ros-jazzy-turtlebot3-mogi-py = { path = "turtlebot3_mogi_py" }
+ros-jazzy-mogi-trajectory-server = { path = "mogi_trajectory_server" }
+ros-jazzy-turtlebot3-gazebo = { path = "turtlebot3_gazebo" }
 ros-jazzy-turtlebot3 = ">=2.3.6,<3"
 ros-jazzy-turtlebot3-msgs = ">=2.4.0,<3"
 ros-jazzy-turtlebot3-simulations = ">=2.3.7,<3"
