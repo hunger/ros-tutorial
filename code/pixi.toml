@@ -15,7 +15,6 @@ GLIBC_TUNABLES = "glibc.rtld.execstack=2"
 TURTLEBOT3_MODEL = "burger"
 
 [tasks]
-simulation = "ros2 launch turtlebot3_mogi simulation_bringup_line_follow.launch.py"
 line-follower = "ros2 run turtlebot3_mogi_py line_follower_cnn"
 
 [feature.training]
@@ -24,20 +23,30 @@ platforms = ["workstation"]
 [feature.training.tasks]
 train = "ros2 run turtlebot3_mogi_py train_network"
 
+[feature.simulation]
+platforms = ["linux-64", "workstation"]
+
+[feature.simulation.dependencies]
+ros-jazzy-turtlebot3-gazebo = { path = "turtlebot3_gazebo" }
+ros-jazzy-mogi-trajectory-server = { path = "mogi_trajectory_server" }
+ros-jazzy-turtlebot3 = ">=2.3.6,<3"
+ros-jazzy-turtlebot3-simulations = ">=2.3.7,<3"
+ros-jazzy-ros-gz = ">=1.0.19,<2"
+ros-jazzy-rviz2 = ">=14.1.19,<15"
+
+[feature.simulation.tasks]
+simulation = "ros2 launch turtlebot3_mogi simulation_bringup_line_follow.launch.py"
+
 [environments]
+default = ["simulation"]
 training = ["training"]
+robot = []
 
 [dependencies]
 ros-jazzy-turtlebot3-mogi = { path = "turtlebot3_mogi" }
 ros-jazzy-turtlebot3-mogi-py = { path = "turtlebot3_mogi_py" }
-ros-jazzy-mogi-trajectory-server = { path = "mogi_trajectory_server" }
-ros-jazzy-turtlebot3-gazebo = { path = "turtlebot3_gazebo" }
-ros-jazzy-turtlebot3 = ">=2.3.6,<3"
 ros-jazzy-turtlebot3-msgs = ">=2.4.0,<3"
-ros-jazzy-turtlebot3-simulations = ">=2.3.7,<3"
-ros-jazzy-ros-gz = ">=1.0.19,<2"
 ros-jazzy-cv-bridge = ">=4.1.0,<5"
-ros-jazzy-rviz2 = ">=14.1.19,<15"
 ros-jazzy-ros2launch = ">=0.26.11,<0.27"
 ros-jazzy-ros2run = ">=0.32.8,<0.33"
 tensorflow = ">=2.19.1,<3"
