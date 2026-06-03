@@ -1,0 +1,10 @@
+[workspace]
+authors = ["Tobias Hunger <tobias@prefix.dev>"]
+channels = ["https://prefix.dev/robostack-jazzy", "https://prefix.dev/conda-forge"]
+name = "code"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
