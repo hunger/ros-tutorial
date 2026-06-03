@@ -8,8 +8,11 @@ version = "0.1.0"
 
 [activation.env]
 GLIBC_TUNABLES = "glibc.rtld.execstack=2"
+TURTLEBOT3_MODEL = "burger"
 
 [tasks]
+simulation = "ros2 launch turtlebot3_mogi simulation_bringup_line_follow.launch.py"
+line-follower = "ros2 run turtlebot3_mogi_py line_follower_cnn"
 
 [dependencies]
 ros-jazzy-turtlebot3-mogi = { path = "turtlebot3_mogi" }
