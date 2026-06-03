@@ -1,0 +1,38 @@
+[workspace]
+name = "ros-tutorial-book"
+description = "The 'Pixi for ROS Users' tutorial, rendered as an mdBook-style site with MkDocs Material"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+[dependencies]
+
+[feature.book.dependencies]
+python = ">=3.11"
+
+[feature.book.pypi-dependencies]
+mkdocs-material = ">=9.5"
+
+[feature.book.tasks]
+_sync-chapters = { cmd = """python -c "
+import pathlib
+root = pathlib.Path('.')
+out = root / 'book' / 'src'
+gh = 'https://github.com/hunger/ros-tutorial/tree/main/code'
+mapping = {
+    'chapter1.md': 'ch01.md',
+    'chapter2.md': 'ch02.md',
+    'chapter3.md': 'ch03.md',
+    'chapter4.md': 'ch04.md',
+    'summary.md': 'summary.md',
+}
+for source, dest in mapping.items():
+    text = (root / source).read_text()
+    text = text.replace('](./code)', '](' + gh + ')')
+    (out / dest).write_text(text)
+print('synced', len(mapping), 'chapter files into book/src')
+" """, description = "Copy the root chapter*.md/summary.md into book/src for rendering" }
+book-build = { cmd = "mkdocs build", cwd = "book", depends-on = ["_sync-chapters"], description = "Build the static book into book/site" }
+book-serve = { cmd = "mkdocs serve --livereload -w ../chapter1.md -w ../chapter2.md -w ../chapter3.md -w ../chapter4.md -w ../summary.md", cwd = "book", depends-on = ["_sync-chapters"], description = "Serve the book locally with live reload" }
+
+[environments]
+book = { features = ["book"] }

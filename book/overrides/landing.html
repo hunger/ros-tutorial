@@ -1,0 +1,160 @@
+{% extends "main.html" %} {% block tabs %}{% endblock %} {% block site_nav %}{%
+endblock %} {% block footer %}{% endblock %} {% block container %}
+<script>
+    // Force light mode on cover page
+    document.body.setAttribute("data-md-color-scheme", "default");
+</script>
+<style>
+    /* Hide header on cover page */
+    .md-header {
+        display: none;
+    }
+
+    /* Take over the full grid width */
+    .md-main__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        margin-top: 0;
+    }
+
+    .rb-landing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 1.5rem 1.5rem 1.5rem;
+        font-family: var(--rb-font-body);
+        width: 100%;
+    }
+
+    .rb-landing__inner {
+        max-width: 580px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .rb-landing__title {
+        font-weight: 600;
+        font-size: 3rem;
+        line-height: 1.15;
+        margin: 0 0 0.8rem 0;
+        color: var(--rb-heading);
+    }
+
+    .rb-landing__subtitle {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--rb-text-lighter);
+        margin: 0 0 1.5rem 0;
+    }
+
+    .rb-landing__epigraph {
+        margin: 0 0 3rem 0;
+    }
+
+    .rb-landing__epigraph p {
+        font-style: italic;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--rb-blockquote-text);
+        margin: 0 0 0.5em 0;
+    }
+
+    .rb-landing__epigraph footer {
+        font-style: normal;
+        font-variant: small-caps;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        color: var(--rb-text-lighter);
+    }
+
+    .rb-landing__cta {
+        width: fit-content;
+        font-size: 1.25rem;
+        color: var(--rb-link);
+        text-decoration: underline;
+    }
+
+    .rb-landing__cta:hover {
+        color: var(--rb-link-hover);
+    }
+
+    .rb-landing__partnership {
+        margin-top: 3rem;
+    }
+
+    .rb-landing__partnership-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--rb-text-lighter);
+        margin: 0 0 1rem 0;
+    }
+
+    .rb-landing__logos {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .rb-landing__logos img {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+        opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+        .rb-landing {
+            padding: 1.5rem 1rem 1.5rem;
+        }
+
+        .rb-landing__title {
+            font-size: 2.2rem;
+        }
+
+        .rb-landing__logos {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+</style>
+
+<div class="rb-landing">
+    <div class="rb-landing__inner">
+        <h1 class="rb-landing__title">Pixi for ROS Users</h1>
+        <p class="rb-landing__subtitle">
+            One workspace, three machines: a GPU workstation, a CPU laptop, and
+            an aarch64 robot. A hands-on tutorial that rebuilds a ROS 2 line
+            follower with pixi — rich platforms, extras, and variant flags
+            instead of apt, rosdep, and colcon.
+        </p>
+        <div class="rb-landing__epigraph">
+            <p>
+                "Clone the repository, run two commands, and the same project
+                builds and runs on every machine in the lab."
+            </p>
+        </div>
+        <a href="{{ 'introduction/' | url }}" class="rb-landing__cta"
+            ><b>Start Reading</b></a
+        >
+        <div class="rb-landing__partnership">
+            <p class="rb-landing__partnership-label">Brought to you by</p>
+            <div class="rb-landing__logos">
+                <a href="https://prefix.dev" target="_blank" rel="noopener"
+                    ><img
+                        src="{{ 'assets/prefix_logo.svg' | url }}"
+                        alt="prefix.dev"
+                /></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

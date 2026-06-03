@@ -1,0 +1,84 @@
+site_name: Pixi for ROS Users
+site_url: https://hunger.github.io/ros-tutorial/
+site_description: A pixi tutorial for ROS users — rich platforms, extras, and flags
+repo_url: https://github.com/hunger/ros-tutorial
+repo_name: hunger/ros-tutorial
+docs_dir: src
+site_dir: site
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/book-icon.png
+  favicon: assets/book-icon.png
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font: false
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.integrate
+
+nav:
+  - <i>Back to Cover</i>: index.md
+  - "<b>Preface</b>":
+      - Introduction: introduction.md
+  - "<b>The Tutorial</b>":
+      - "1. From apt and colcon to a Pixi Workspace": ch01.md
+      - "2. One Workspace, Three Machines": ch02.md
+      - "3. Extras: Packages That Know Their Options": ch03.md
+      - "4. Flags: Selecting a Build Variant": ch04.md
+  - Summary: summary.md
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+  - tables
+  - footnotes
