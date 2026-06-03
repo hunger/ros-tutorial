@@ -6,6 +6,9 @@ platforms = ["linux-64"]
 preview = ["pixi-build"]
 version = "0.1.0"
 
+[activation.env]
+GLIBC_TUNABLES = "glibc.rtld.execstack=2"
+
 [tasks]
 
 [dependencies]
