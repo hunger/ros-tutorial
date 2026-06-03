@@ -6,3 +6,8 @@ backend = { name = "pixi-build-ros", version = "*", channels = [
 
 [package.build.config]
 distro = "jazzy"
+
+[package.extra-dependencies.training]
+scikit-learn = ">=1.9.0,<2"
+imutils = ">=0.5.4,<0.6"
+matplotlib-base = ">=3.10.9,<4"
