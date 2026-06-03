@@ -18,6 +18,15 @@ TURTLEBOT3_MODEL = "burger"
 simulation = "ros2 launch turtlebot3_mogi simulation_bringup_line_follow.launch.py"
 line-follower = "ros2 run turtlebot3_mogi_py line_follower_cnn"
 
+[feature.training]
+platforms = ["workstation"]
+
+[feature.training.tasks]
+train = "ros2 run turtlebot3_mogi_py train_network"
+
+[environments]
+training = ["training"]
+
 [dependencies]
 ros-jazzy-turtlebot3-mogi = { path = "turtlebot3_mogi" }
 ros-jazzy-turtlebot3-mogi-py = { path = "turtlebot3_mogi_py" }
