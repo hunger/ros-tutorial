@@ -3,6 +3,7 @@ backend = { name = "pixi-build-ros", version = "*", channels = [
   "https://prefix.dev/pixi-build-backends",
   "https://prefix.dev/conda-forge",
 ] }
+flags = ["cuda"]
 
 [package.build.config]
 distro = "jazzy"
